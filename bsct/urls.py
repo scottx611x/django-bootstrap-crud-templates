@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import  url
 from django.core.urlresolvers import reverse_lazy
 
 from bsct import views as bsct_views
@@ -78,13 +78,12 @@ class URLGenerator( object ):
 
     def get_urlpatterns( self, paginate_by = 10 ):
         """
-        Generate the entire set URL for the model and return as a patterns
-        object.
+        Generate a list containing all urls for the model and return said list.
         """
-        return patterns( '',
+        return [ 
             self.get_create_url(),
             self.get_update_url(),
             self.get_list_url( paginate_by = paginate_by ),
             self.get_delete_url(),
             self.get_detail_url()
-        )
+        ]
