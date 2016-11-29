@@ -4,17 +4,21 @@ set as default template names.
 """
 from django.views import generic
 
-class CreateView( generic.CreateView ):
+class AbstractBaseView():
+    class Meta:
+        fields = '__all__'
+
+class CreateView( AbstractBaseView, generic.CreateView ):
     template_name = 'bsct/plain/form.html'
 
-class UpdateView( generic.UpdateView ):
+class UpdateView( AbstractBaseView, generic.UpdateView ):
     template_name = 'bsct/plain/form.html'
 
-class ListView( generic.ListView ):
+class ListView( AbstractBaseView, generic.ListView ):
     template_name = 'bsct/plain/list.html'
 
-class DetailView( generic.DetailView ):
+class DetailView( AbstractBaseView, generic.DetailView ):
     template_name = 'bsct/plain/detail.html'
 
-class DeleteView( generic.DeleteView ):
+class DeleteView( AbstractBaseView, generic.DeleteView ):
     template_name = 'bsct/plain/confirm_delete.html'
