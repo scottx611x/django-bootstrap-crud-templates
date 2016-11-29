@@ -5,8 +5,7 @@ set as default template names.
 from django.views import generic
 
 class AbstractBaseView():
-    class Meta:
-        fields = '__all__'
+    fields = '__all__'
 
 class CreateView( AbstractBaseView, generic.CreateView ):
     template_name = 'bsct/plain/form.html'
